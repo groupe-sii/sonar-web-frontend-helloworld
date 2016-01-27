@@ -15,8 +15,16 @@ Helloworld project using [sonar-web-frontend-plugin](https://github.com/groupe-s
 npm install
 ```
 
-## Run linting
+- configure a jenkins job, and a build task 'Run a SonarQube scan' with sonar.properties in the repository
+- configure the dashboard of the project in Sonar by adding 'Issues by languages' widget
+
+## Run
+
+- run linting
 
 ```Javascript
 gulp lint
 ```
+
+- run Jenkins job
+- open your Sonar, enjoy !
