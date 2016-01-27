@@ -12,7 +12,8 @@ var gulp = require('gulp'),
     projectName = 'sonar-web-frontend-helloworld',
     projectPath = 'src',
 
-    jsReporter = new SonarWebReporters.JSReporter(reportsPath + 'jshint.json');
+    jsReporter = new SonarWebReporters.JSReporter(reportsPath + 'jshint.json'),
+    cssReporter = new SonarWebReporters.CSSReporter(reportsPath + 'csslint.json');
 
 gulp.task('clean', function() {
     return $.del(reportsPath);
@@ -33,8 +34,16 @@ gulp.task('js-hint', function() {
     });
 });
 
+gulp.task('css-lint', function() {
+    cssReporter.openReporter(projectName, projectPath);
+    return gulp.src('src/**/*.css')
+        .pipe($.csslint())
+        .pipe($.csslint.reporter(cssReporter.reporter.bind(cssReporter)))
+        .on('end', cssReporter.closeReporter.bind(cssReporter));
+});
+
 gulp.task('lint', function() {
     return $.runSequence(
-        'clean', 'js-hint'
+        'clean', 'js-hint', 'css-lint'
     );
 });
