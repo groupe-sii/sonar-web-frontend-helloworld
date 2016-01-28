@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
     mkdirp = require('mkdirp'),
 
-    reportsPath = 'reports/',
+    reportsPath = 'report/',
     projectName = 'sonar-web-frontend-helloworld',
     projectPath = 'src',
 
