@@ -21,7 +21,7 @@ var gulp = require('gulp'),
     cssReporter = new SonarWebReporters.CSSReporter(reportsPath + 'csslint.json'),
     htmlReporter = new SonarWebReporters.HTMLReporter(reportsPath + 'htmlhint.json'),
     scssReporter = new SonarWebReporters.SCSSReporter(reportsPath + 'scsslint.json'),
-    esReporter = new SonarWebReporters.ESReporter(reportsPath + 'eslint-angular.json');
+    esReporter = new SonarWebReporters.ESReporter(reportsPath + 'eslint-angular.json', 'src');
 
 gulp.task('clean', function() {
     return $.del(reportsPath);
