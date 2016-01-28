@@ -8,6 +8,7 @@ Helloworld project using [sonar-web-frontend-plugin](https://github.com/groupe-s
 - gulp npm package installed globally
 - Jenkins
 - Sonar 4.5.5 LTS
+- ruby + scss-lint gem
 
 ## Installation
 

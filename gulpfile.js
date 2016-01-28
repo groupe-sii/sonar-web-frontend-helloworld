@@ -15,10 +15,12 @@ var gulp = require('gulp'),
     jsSources = 'src/**/*.js',
     cssSources = 'src/**/*.css',
     htmlSources = 'src/**/*.html',
+    scssSources = 'src/**/*.scss',
 
     jsReporter = new SonarWebReporters.JSReporter(reportsPath + 'jshint.json'),
     cssReporter = new SonarWebReporters.CSSReporter(reportsPath + 'csslint.json'),
-    htmlReporter = new SonarWebReporters.HTMLReporter(reportsPath + 'htmlhint.json');
+    htmlReporter = new SonarWebReporters.HTMLReporter(reportsPath + 'htmlhint.json'),
+    scssReporter = new SonarWebReporters.SCSSReporter(reportsPath + 'scsslint.json');
 
 gulp.task('clean', function() {
     return $.del(reportsPath);
@@ -55,8 +57,17 @@ gulp.task('html-hint', function() {
         .on('end', htmlReporter.closeReporter.bind(htmlReporter));
 });
 
+gulp.task('scss-lint', function() {
+    scssReporter.openReporter(projectName, projectPath);
+    gulp.src(scssSources)
+        .pipe($.scssLint({
+            customReport: scssReporter.reporter.bind(scssReporter)
+        }))
+        .on('end', scssReporter.closeReporter.bind(scssReporter));
+});
+
 gulp.task('lint', function() {
     return $.runSequence(
-        'clean', 'js-hint', 'css-lint', 'html-hint'
+        'clean', 'js-hint', 'css-lint', 'html-hint', 'scss-lint'
     );
 });
