@@ -20,7 +20,8 @@ var gulp = require('gulp'),
     jsReporter = new SonarWebReporters.JSReporter(reportsPath + 'jshint.json'),
     cssReporter = new SonarWebReporters.CSSReporter(reportsPath + 'csslint.json'),
     htmlReporter = new SonarWebReporters.HTMLReporter(reportsPath + 'htmlhint.json'),
-    scssReporter = new SonarWebReporters.SCSSReporter(reportsPath + 'scsslint.json');
+    scssReporter = new SonarWebReporters.SCSSReporter(reportsPath + 'scsslint.json'),
+    esReporter = new SonarWebReporters.ESReporter(reportsPath + 'eslint-angular.json');
 
 gulp.task('clean', function() {
     return $.del(reportsPath);
@@ -66,8 +67,18 @@ gulp.task('scss-lint', function() {
         .on('end', scssReporter.closeReporter.bind(scssReporter));
 });
 
+gulp.task('eslint', function() {
+    esReporter.openReporter(projectName, projectPath);
+    return gulp.src(jsSources)
+        .pipe($.eslint({
+            reset: true
+        }))
+        .pipe($.eslint.format(esReporter.reporter));
+    ;
+});
+
 gulp.task('lint', function() {
     return $.runSequence(
-        'clean', 'js-hint', 'css-lint', 'html-hint', 'scss-lint'
+        'clean', 'js-hint', 'css-lint', 'html-hint', 'scss-lint', 'eslint'
     );
 });

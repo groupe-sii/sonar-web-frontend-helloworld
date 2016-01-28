@@ -28,8 +28,10 @@
   "homepage": "https://github.com/groupe-sii/sonar-web-frontend-helloworld#readme",
   "devDependencies": {
     "del": "^2.2.0",
+    "eslint-plugin-angular": "^0.15.0",
     "gulp": "^3.9.0",
     "gulp-csslint": "^0.2.0",
+    "gulp-eslint": "^1.1.1",
     "gulp-htmlhint": "^0.3.1",
     "gulp-jshint": "^2.0.0",
     "gulp-load-plugins": "^1.2.0",
