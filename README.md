@@ -18,6 +18,7 @@ npm install
 
 - configure a jenkins job, and a build task 'Run a SonarQube scan' with sonar.properties in the repository
 - configure the dashboard of the project in Sonar by adding 'Issues by languages' widget
+- configure the added widget to support AngularJS if needed with this list of languages : js,css,html,scss,angularjs
 
 ## Run
 
