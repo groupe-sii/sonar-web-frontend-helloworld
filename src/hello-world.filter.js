@@ -6,4 +6,5 @@ angular.module('myfilter-module', [])
         	console.log('Hello world!');
             return input.toUpperCase();
         };
-    });
+    })
+    .controller('HelloCtrl', ['$scope', function ($scope) {}]);
