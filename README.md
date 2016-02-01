@@ -34,3 +34,7 @@ gulp lint
 
 - run Jenkins job
 - open your Sonar, enjoy !
+
+# Results
+
+![Sonar](https://raw.githubusercontent.com/groupe-sii/sonar-web-frontend-helloworld/master/screenshots/sonar.png)
