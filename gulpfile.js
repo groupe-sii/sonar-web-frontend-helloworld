@@ -108,6 +108,17 @@ gulp.task('jscpd-html', function() {
     }));
 });
 
+gulp.task('jscpd-scss', function() {
+  return gulp.src(scssSources)
+    .pipe($.jscpd({
+        'min-lines': 2,
+        'min-tokens': 5,
+        silent     : true,
+        languages  : ['css'],
+        output     : reportsPath + 'scss-duplication.xml'
+    }));
+});
+
 gulp.task('lint', function() {
     return $.runSequence(
         'clean', 'js-hint', 'css-lint', 'html-hint', 'scss-lint', 'eslint'
@@ -116,6 +127,6 @@ gulp.task('lint', function() {
 
 gulp.task('jscpd', function() {
     return $.runSequence(
-        'jscpd-js', 'jscpd-css', 'jscpd-html'
+        'jscpd-js', 'jscpd-css', 'jscpd-html', 'jscpd-scss'
     );
 });
