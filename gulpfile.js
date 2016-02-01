@@ -81,7 +81,7 @@ gulp.task('jscpd-js', function() {
   return gulp.src(jsSources)
     .pipe($.jscpd({
         'min-lines': 2,
-        verbose    : true,
+        silent     : true,
         languages  : ['javascript'],
         output     : reportsPath + 'js-duplication.xml'
     }));
