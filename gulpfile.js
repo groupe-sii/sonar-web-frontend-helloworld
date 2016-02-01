@@ -77,8 +77,24 @@ gulp.task('eslint', function() {
     ;
 });
 
+gulp.task('jscpd-js', function() {
+  return gulp.src(jsSources)
+    .pipe($.jscpd({
+        'min-lines': 2,
+        verbose    : true,
+        languages  : ['javascript'],
+        output     : reportsPath + 'js-duplication.xml'
+    }));
+});
+
 gulp.task('lint', function() {
     return $.runSequence(
         'clean', 'js-hint', 'css-lint', 'html-hint', 'scss-lint', 'eslint'
+    );
+});
+
+gulp.task('jscpd', function() {
+    return $.runSequence(
+        'jscpd-js'
     );
 });
