@@ -87,6 +87,27 @@ gulp.task('jscpd-js', function() {
     }));
 });
 
+gulp.task('jscpd-css', function() {
+  return gulp.src(cssSources)
+    .pipe($.jscpd({
+        'min-lines': 2,
+        'min-tokens': 5,
+        silent     : true,
+        languages  : ['css'],
+        output     : reportsPath + 'css-duplication.xml'
+    }));
+});
+
+gulp.task('jscpd-html', function() {
+  return gulp.src(htmlSources)
+    .pipe($.jscpd({
+        'min-lines': 2,
+        silent     : true,
+        languages  : ['htmlmixed'],
+        output     : reportsPath + 'html-duplication.xml'
+    }));
+});
+
 gulp.task('lint', function() {
     return $.runSequence(
         'clean', 'js-hint', 'css-lint', 'html-hint', 'scss-lint', 'eslint'
@@ -95,6 +116,6 @@ gulp.task('lint', function() {
 
 gulp.task('jscpd', function() {
     return $.runSequence(
-        'jscpd-js'
+        'jscpd-js', 'jscpd-css', 'jscpd-html'
     );
 });

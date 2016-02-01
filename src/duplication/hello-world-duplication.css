@@ -1,0 +1,13 @@
+.class1 {
+	background-color: red;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+}
+
+.class2 {
+	background-color: red;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+}
