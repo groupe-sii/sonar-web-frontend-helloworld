@@ -12,11 +12,14 @@ Helloworld project using [sonar-web-frontend-plugin](https://github.com/groupe-s
 
 ## Installation
 
-```Javascript
+- configure a jenkins job, and run a shell command with these lines
+
+```Shell
 npm install
+gulp lint
 ```
 
-- configure a jenkins job, and a build task 'Run a SonarQube scan' with sonar.properties in the repository
+- add build task 'Run a SonarQube scan' with sonar.properties in the repository
 - configure the dashboard of the project in Sonar by adding 'Issues by languages' widget
 - in "quality profiles" tab, for "Javascript" profiles, set as default "All linters"
 
@@ -24,13 +27,7 @@ npm install
 
 Due to a limitation of Sonar for handling multiple reporters on the same language (JS), the AngularJS errors are listed in the JS tab.
 
-## Run
-
-- run linting
-
-```Javascript
-gulp lint
-```
+## Run on jenkins
 
 - run Jenkins job
 - open your Sonar, enjoy !
