@@ -66,8 +66,7 @@ gulp.task('scss-lint', function() {
     scssReporter.openReporter(projectName, projectPath);
     gulp.src(scssSources)
         .pipe($.scssLint({
-            customReport: scssReporter.reporter.bind(scssReporter),
-            verbose: true
+            customReport: scssReporter.reporter.bind(scssReporter)
         }))
         .on('end', scssReporter.closeReporter.bind(scssReporter));
 });
