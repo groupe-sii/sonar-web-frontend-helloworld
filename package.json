@@ -4,7 +4,8 @@
   "description": "Helloworld project using sonar-web-frontend-plugin to link with sonar-web-frontend-reporters",
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-karma": "./node_modules/karma/bin/karma start tests/karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,10 @@
     "jshint-stylish": "^2.1.0",
     "mkdirp": "^0.5.1",
     "run-sequence": "^1.1.5",
-    "sonar-web-frontend-reporters": "^1.0.6"
+    "sonar-web-frontend-reporters": "^1.0.6",
+    "karma-jasmine": "^0.3.6",
+    "jasmine-core": "^2.3.4",
+    "karma-junit7-sonarqube-reporter": "^0.0.1",
+    "karma-phantomjs-launcher": "^0.2.1"
   }
 }
