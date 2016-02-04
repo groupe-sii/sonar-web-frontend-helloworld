@@ -4,7 +4,7 @@ define([
     'SOURCES/hello-world'
 ], function(expect, bdd) {
 
-    bdd.describe('test.vanilla.hello-world', function() {
+    bdd.describe('test.vanilla.hello', function() {
 
         bdd.it('should reply hello', function() {
             expect(helloModule.hello()).to.equal('hello');

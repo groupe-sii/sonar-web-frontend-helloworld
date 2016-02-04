@@ -13,12 +13,15 @@ define({
         id: 'Console'
     }, {
         id: 'JUnit',
-        filename: 'report/unit.xml'
+        filename: 'report/junit.xml'
+    }, {
+        id: 'tests/JUnitSonarReporter',
+        filename: 'report/unit.xml' // Directory needs to exist before
     }],
 
     // Non-functional test suite(s) to run in each browser
     suites: [
-        'tests/vanilla/hello.spec'
+        'tests/vanilla/hello'
     ],
 
     // A regular expression matching URLs to files that should not be included in code coverage analysis
