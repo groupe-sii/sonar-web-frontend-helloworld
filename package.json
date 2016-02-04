@@ -47,7 +47,7 @@
     "sonar-web-frontend-reporters": "^1.0.6",
     "karma-jasmine": "^0.3.6",
     "jasmine-core": "^2.3.4",
-    "karma-junit7-sonarqube-reporter": "^0.0.1",
+    "karma-junit7-sonarqube-reporter": "^0.0.3",
     "karma-phantomjs-launcher": "^0.2.1"
   }
 }
