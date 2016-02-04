@@ -11,6 +11,9 @@ define({
         filename: 'report/js.lcov' // Directory needs to exist before
     }, {
         id: 'Console'
+    }, {
+        id: 'JUnit',
+        filename: 'report/unit.xml'
     }],
 
     // Non-functional test suite(s) to run in each browser
