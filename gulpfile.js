@@ -27,6 +27,10 @@ gulp.task('clean', function() {
     return $.del(reportsPath);
 });
 
+/**
+ * LINTING
+ */
+
 gulp.task('js-hint', function() {
     mkdirp(reportsPath, function(err) {
         if (err) {
@@ -62,7 +66,8 @@ gulp.task('scss-lint', function() {
     scssReporter.openReporter(projectName, projectPath);
     gulp.src(scssSources)
         .pipe($.scssLint({
-            customReport: scssReporter.reporter.bind(scssReporter)
+            customReport: scssReporter.reporter.bind(scssReporter),
+            verbose: true
         }))
         .on('end', scssReporter.closeReporter.bind(scssReporter));
 });
@@ -76,6 +81,16 @@ gulp.task('eslint', function() {
         .pipe($.eslint.format(esReporter.reporter));
     ;
 });
+
+gulp.task('lint', function() {
+    return $.runSequence(
+        'clean', 'js-hint', 'css-lint', 'html-hint', 'scss-lint', 'eslint'
+    );
+});
+
+/**
+ * Duplication
+ */
 
 gulp.task('jscpd-js', function() {
   return gulp.src(jsSources)
@@ -117,12 +132,6 @@ gulp.task('jscpd-scss', function() {
         languages  : ['css'],
         output     : reportsPath + 'scss-duplication.xml'
     }));
-});
-
-gulp.task('lint', function() {
-    return $.runSequence(
-        'clean', 'js-hint', 'css-lint', 'html-hint', 'scss-lint', 'eslint'
-    );
 });
 
 gulp.task('jscpd', function() {
