@@ -18,6 +18,7 @@ Helloworld project using [sonar-web-frontend-plugin](https://github.com/groupe-s
 npm install
 gulp lint
 gulp jscpd
+gulp tests
 ```
 
 - add build task 'Run a SonarQube scan' with sonar.properties in the repository

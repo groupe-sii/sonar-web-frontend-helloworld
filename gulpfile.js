@@ -138,3 +138,18 @@ gulp.task('jscpd', function() {
         'jscpd-js', 'jscpd-css', 'jscpd-html', 'jscpd-scss'
     );
 });
+
+/**
+ * Tests
+ */
+
+gulp.task('tests-js', function() {
+    return gulp.src('')
+        .pipe($.run('intern-client config=tests/intern-vanilla'));
+});
+
+gulp.task('tests', function() {
+    return $.runSequence(
+        'tests-js'
+    );
+});
