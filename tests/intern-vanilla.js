@@ -12,9 +12,6 @@ define({
     }, {
         id: 'Console'
     }, {
-        id: 'JUnit',
-        filename: 'report/junit.xml'
-    }, {
         id: 'tests/JUnitSonarReporter',
         filename: 'report/unit.xml' // Directory needs to exist before
     }],

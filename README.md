@@ -15,10 +15,8 @@ Helloworld project using [sonar-web-frontend-plugin](https://github.com/groupe-s
 - configure a jenkins job, and run a shell command with these lines
 
 ```Shell
-npm install
-gulp lint
-gulp jscpd
-gulp tests
+chmod +x tools/jenkins.sh
+./tools/jenkins.sh
 ```
 
 - add build task 'Run a SonarQube scan' with sonar.properties in the repository

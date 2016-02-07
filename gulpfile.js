@@ -148,8 +148,13 @@ gulp.task('tests-js', function() {
         .pipe($.run('intern-client config=tests/intern-vanilla'));
 });
 
+gulp.task('tests-it', function() {
+    return gulp.src('')
+        .pipe($.run('intern-runner config=tests/intern-integration.local'));
+});
+
 gulp.task('tests', function() {
     return $.runSequence(
-        'tests-js'
+        'tests-js', 'tests-it'
     );
 });

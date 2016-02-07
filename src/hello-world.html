@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title></title>
+    <title></title>
 </head>
+
 <body>
-	<div CLASS="bad-attribute"></div>
+    <div CLASS="bad-attribute">
+        <input type="text" readonly="" id="inputRead"></input>
+    </div>
     <script type="text/javascript" src="hello-world.js"></script>
+    <script type="text/javascript">
+    document.getElementById('inputRead').value = helloModule.hello();
+    </script>
 </body>
+
 </html>
