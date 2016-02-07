@@ -83,7 +83,7 @@ gulp.task('eslint', function() {
 
 gulp.task('lint', function() {
     return $.runSequence(
-        'clean', 'js-hint', 'css-lint', 'html-hint', 'scss-lint', 'eslint'
+        'js-hint', 'css-lint', 'html-hint', 'scss-lint', 'eslint'
     );
 });
 

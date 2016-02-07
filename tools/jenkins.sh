@@ -17,6 +17,13 @@ phantomPID=$!
 sleep 5
 
 echo ""
+echo "Cleaning report folder"
+echo ""
+node $GULP clean
+
+mkdir 'report'
+
+echo ""
 echo "Run tests"
 echo ""
 node $GULP tests
@@ -41,5 +48,5 @@ node $GULP jscpd
 
 echo ""
 echo ""
-echo "Jenkins internal job done !"
+echo "Jenkins job done !"
 echo ""
