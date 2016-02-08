@@ -99,7 +99,7 @@ define([
             time: suite.timeElapsed / 1000,
             childNodes: suite.tests.map(createTestNode)
         };
-        if (suite.name !== null) {
+        if (suite.name !== null && suite.parent !== null) {
             config.file = parseSuiteNameForFilePath(suite.name);
         }
         return new XmlNode('testsuite', config);
