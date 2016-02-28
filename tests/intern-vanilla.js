@@ -8,7 +8,7 @@ define({
 
     reporters: [{
         id: 'Lcov',
-        filename: 'report/js.lcov' // Directory needs to exist before
+        filename: 'report/unit.lcov' // Directory needs to exist before
     }, {
         id: 'Console'
     }, {
