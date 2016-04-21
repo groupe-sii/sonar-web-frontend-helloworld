@@ -44,6 +44,7 @@
     "mkdirp": "^0.5.1",
     "phantomjs-prebuilt": "^2.1.4",
     "run-sequence": "^1.1.5",
+    "sonar-web-frontend-duplication": "^1.0.0",
     "sonar-web-frontend-reporters": "^1.0.9"
   }
 }

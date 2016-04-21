@@ -5,10 +5,11 @@ var gulp = require('gulp'),
         pattern: ['gulp-*', 'del', 'run-sequence']
     }),
     SonarWebReporters = require("sonar-web-frontend-reporters"),
+    SonarWebDuplication = require("sonar-web-frontend-duplication"),
 
     mkdirp = require('mkdirp'),
 
-    reportsPath = 'report/',
+    reportsPath = 'reports/',
     projectName = 'sonar-web-frontend-helloworld',
     projectPath = 'src',
 
@@ -27,64 +28,26 @@ gulp.task('clean', function() {
 gulp.task('lint', function() {
     return SonarWebReporters.launchReporters({
         project: projectName, 
-        css : {report: 'report/csslint.json'},
-        scss : {report: 'report/scsslint.json'},
-        html : {report: 'report/htmlhint.json'},
-        js : {report: 'report/jshint.json'},
-        eslint : {report: 'report/eslint-angular.json', base: 'src'}
+        css : true,
+        scss : true,
+        html : true,
+        js : true,
+        eslint : true
     });
 });
+
 
 /**
  * Duplication
  */
-
-gulp.task('jscpd-js', function() {
-  return gulp.src(jsSources)
-    .pipe($.jscpd({
-        'min-lines': 2,
-        silent     : true,
-        languages  : ['javascript'],
-        output     : reportsPath + 'js-duplication.xml'
-    }));
-});
-
-gulp.task('jscpd-css', function() {
-  return gulp.src(cssSources)
-    .pipe($.jscpd({
-        'min-lines': 2,
-        'min-tokens': 5,
-        silent     : true,
-        languages  : ['css'],
-        output     : reportsPath + 'css-duplication.xml'
-    }));
-});
-
-gulp.task('jscpd-html', function() {
-  return gulp.src(htmlSources)
-    .pipe($.jscpd({
-        'min-lines': 2,
-        silent     : true,
-        languages  : ['htmlmixed'],
-        output     : reportsPath + 'html-duplication.xml'
-    }));
-});
-
-gulp.task('jscpd-scss', function() {
-  return gulp.src(scssSources)
-    .pipe($.jscpd({
-        'min-lines': 2,
-        'min-tokens': 5,
-        silent     : true,
-        languages  : ['css'],
-        output     : reportsPath + 'scss-duplication.xml'
-    }));
-});
-
-gulp.task('jscpd', function() {
-    return $.runSequence(
-        'jscpd-js', 'jscpd-css', 'jscpd-html', 'jscpd-scss'
-    );
+gulp.task('duplication', function() {
+    return SonarWebDuplication.launchReporters({
+        project: projectName, 
+        css : true,
+        scss : true,
+        html : true,
+        js : true
+    });
 });
 
 /**
