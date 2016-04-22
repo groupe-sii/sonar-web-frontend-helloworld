@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
+    fs = require('fs'),
     $ = require('gulp-load-plugins')({
         pattern: ['gulp-*', 'del', 'run-sequence']
     }),
@@ -9,13 +10,8 @@ var gulp = require('gulp'),
 
     mkdirp = require('mkdirp'),
 
-    reportsPath = 'reports/',
     projectName = 'sonar-web-frontend-helloworld',
     projectPath = 'src';
-
-gulp.task('clean', function() {
-    return $.del(reportsPath);
-});
 
 /**
  * LINTING
@@ -48,13 +44,19 @@ gulp.task('duplication', function() {
 /**
  * Tests
  */
+gulp.task('tests-folder', function() {
+    if (!fs.existsSync("reports/sonar")){
+        mkdirp.sync("reports/sonar");
+    }
+    return true;
+});
 
-gulp.task('tests-js', function() {
+gulp.task('tests-js', ['tests-folder'], function() {
     return gulp.src('')
         .pipe($.run('intern-client config=tests/intern-vanilla'));
 });
 
-gulp.task('tests-it', function() {
+gulp.task('tests-it', ['tests-folder'], function() {
     return gulp.src('')
         .pipe($.run('intern-runner config=tests/intern-integration.local'));
 });

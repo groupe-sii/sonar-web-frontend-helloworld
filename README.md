@@ -15,8 +15,38 @@ Helloworld project using [sonar-web-frontend-plugin](https://github.com/groupe-s
 - configure a jenkins job, and run a shell command with these lines
 
 ```Shell
-chmod +x tools/jenkins.sh
-./tools/jenkins.sh
+#!/bin/sh
+#link gulp bin
+GULP=node_modules/gulp/bin/gulp.js
+
+#install node modules
+npm install
+
+#Launching phantomjs in webdriver mode...
+node_modules/.bin/phantomjs --webdriver=4444 > /dev/null &
+# Store the PID
+phantomPID=$!
+
+#let phantom launch fully
+sleep 5
+
+#Run tests
+node $GULP tests
+
+#let time for tests to pass
+sleep 10
+
+#Exit tests
+kill -9 $phantomPID
+
+#linting
+node $GULP lint
+
+#duplication
+node $GULP duplication
+
+echo "Jenkins job done !"
+echo ""
 ```
 
 - add build task 'Run a SonarQube scan' with sonar.properties in the repository

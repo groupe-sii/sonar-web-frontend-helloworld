@@ -9,12 +9,12 @@ define([
 
     intern.reporters = [{
         id: 'tests/JUnitSonarReporter',
-        filename: 'report/it.unit.xml' // Directory needs to exist before
+        filename: 'reports/sonar/js-it.xml' // Directory needs to exist before
     }, {
         id: 'Console'
     }, {
         id: 'Lcov',
-        filename: 'report/it.unit.lcov' // Directory needs to exist before
+        filename: 'reports/sonar/js-it.lcov' // Directory needs to exist before
     }];
 
     // Non-functional test suite(s) to run in each browser
