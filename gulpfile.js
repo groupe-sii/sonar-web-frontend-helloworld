@@ -11,12 +11,7 @@ var gulp = require('gulp'),
 
     reportsPath = 'reports/',
     projectName = 'sonar-web-frontend-helloworld',
-    projectPath = 'src',
-
-    jsSources = 'src/**/*.js',
-    cssSources = 'src/**/*.css',
-    htmlSources = 'src/**/*.html',
-    scssSources = 'src/**/*.scss';
+    projectPath = 'src';
 
 gulp.task('clean', function() {
     return $.del(reportsPath);
