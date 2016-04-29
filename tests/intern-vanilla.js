@@ -8,12 +8,12 @@ define({
 
     reporters: [{
         id: 'Lcov',
-        filename: 'reports/sonar/js-unit.lcov' // Directory needs to exist before
+        filename: 'reports/sonar/js-ut.lcov' // Directory needs to exist before
     }, {
         id: 'Console'
     }, {
         id: 'tests/JUnitSonarReporter',
-        filename: 'reports/sonar/js-unit.xml' // Directory needs to exist before
+        filename: 'reports/sonar/js-ut.xml' // Directory needs to exist before
     }],
 
     // Non-functional test suite(s) to run in each browser
