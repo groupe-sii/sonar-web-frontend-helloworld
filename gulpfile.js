@@ -18,12 +18,37 @@ var gulp = require('gulp'),
  */
 gulp.task('lint', function() {
     return SonarWebReporters.launchReporters({
-        project: projectName, 
-        css : true,
-        scss : true,
-        html : true,
-        js : true,
-        eslint : true
+        project: projectName,
+        css : {
+          src : 'src/**/*.css',
+          report : 'reports/sonar/csslint.json',
+          rulesFile : '.csslintrc'
+        },
+        scss : {
+          src : 'src/**/*.scss',
+          report : 'reports/sonar/scsslint.json',
+          rulesFile : '.scsslintrc.yml'
+        },
+        html : {
+          src : 'src/**/*.html',
+          report : 'reports/sonar/htmlhint.json',
+          rulesFile : '.htmlhintrc'
+        },
+        js : {
+          src : 'src/**/*.js',
+          report : 'reports/sonar/htmlhint.json',
+          rulesFile : '.htmlhintrc'
+        },
+        eslint : {
+          src : 'src/**/*.js',
+          report : 'reports/sonar/eslint-angular.json',
+          rulesFile : '.eslintrc'
+        },
+        ts : {
+          src : "src/**/*.ts",
+          report : "reports/sonar/tslint.json",
+          rulesFile : 'tslint.json'
+        }
     });
 });
 
@@ -33,7 +58,7 @@ gulp.task('lint', function() {
  */
 gulp.task('duplication', function() {
     return SonarWebDuplication.launchReporters({
-        project: projectName, 
+        project: projectName,
         css : true,
         scss : true,
         html : true,
